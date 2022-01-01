@@ -8,6 +8,11 @@ The goal is to help people get more familiar with R programming (potentially ben
 
 A lot of the contents we will present come from other existing tutorials and workshops. 
 
+## Speakers
+
+- Dr. Licheng Zhang, Bioinformatician, Immuno-Monitoring Core
+- Dr. Joseph Butner, Biomedical Engineer/Faculty Fellow, Mathematics in Medicine
+
 ## Topics potentially to be covered, one per talk (if we have enough speakers)
 
 - R basics
