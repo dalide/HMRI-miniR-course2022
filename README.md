@@ -1,5 +1,8 @@
 # HMRI-miniR-course2022
 
+## Organizers
+METHODIST ASSOCIATION FOR POSTDOCTORAL AND TRAINEE AFFAIRS (MAPTA)
+
 ## Course Plan
 
 Total 4 talks are scheduled so far, and the dates are in January 2022, one hour session for each week. This is the first attempt to organize this kind of lessons for trainees and students of Houston Methodist Research Institute. Hope it goes well and continue to be provided every year afterwards. 
