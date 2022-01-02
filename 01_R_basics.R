@@ -200,6 +200,16 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # 3. Use R to figure out how many people in the set are taller than 67 inches. 
 
 
+# Exercise
+# The following equal length vectors represent data from 8 observations from an experiment involving trapping animals in the wild and recording their species using a 2 digit id and their weight in grams
+
+record_id <- c(1,2,3,4,5,6,7,8)
+weights <- c(51, 64, 28, 32, 68, 55, 36, 41)
+species_id <- c("AB","AB","AM","Am","AB","AB","AM","AM")
+
+# Question: What are the record IDs of animals that have weights greater than 30 and have the species id 'AB' ? 
+
+
 
 ##########################
 ###### Seeking Help ######
