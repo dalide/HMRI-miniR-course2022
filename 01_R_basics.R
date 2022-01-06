@@ -1,3 +1,6 @@
+# R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross Ihaka and Robert Gentleman, R is used among data miners and statisticians for data analysis and developing statistical software. Users have created packages to augment the functions of the R language. ---- wikipedia
+
+
 ###################################
 ###### Creating objects in R ######
 ###################################
@@ -10,7 +13,7 @@
 12/7
 
 # assign values to objects
-weight_kg <- 55
+weight_kg <- 55 
 weight_kg 
 
 # on mac, Option + - gives <-
@@ -18,7 +21,7 @@ weight_kg
 
 # assigning a value to an object, R does not print anything, you can force R to print the value by using parentheses or by typing the object name
 weight_kg <- 55
-(weight_kg <- 55)
+(weight_kg <- 55) 
 
 
 # now R has weight_kg in memory, we can do arithmetic with it
@@ -37,12 +40,13 @@ weight_lb
 
 # it is a good habit to write comment for explanation
 
-# Challenge: what are the values after each Statement? 
+# Exercise: what are the values after each Statement? 
 mass <- 50  # mass? 
 age <- 122  # age?
 mass <- mass * 2.0   # mass? 
 age <- age - 20  # age?
 mass_index <- mass/age  # mass_index
+
 
 # Functions and their arguments
 weight_kg <- sqrt(10)
@@ -104,7 +108,7 @@ class(weight_g)
 
 str(weight_g)
 
-# Challenge
+# Exercise
 # 1. What happens if we try to mix these types in a single vector? R implicitly converts them to all be the same type
 
 num_char <- c(1,2,3,'holiday')
@@ -126,6 +130,7 @@ combined_logical
 
 # hierarchy of coercion (conversion) 
 # logical -> numeric -> character <- logical
+
 
 ################################
 ###### Subsetting vectors ######
@@ -168,7 +173,7 @@ animals[ animals == 'cat' | animals == 'rat'] # return both cat and rat
 animals[ animals %in% c("rat","cat","dog","duck","goat","bird","fish")]
 
 
-# Challenge
+# Exercise
 # why "four" > "five" return TRUE
 "four" > "five"
 
@@ -191,7 +196,7 @@ na.omit(heights)
 
 heights[complete.cases(heights)]
 
-# Challenge
+# Exercise
 # 1. using this vector of heights in inches, create a new vector called heights_no_na, with the NAs removed.
 heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 
@@ -205,7 +210,7 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 
 record_id <- c(1,2,3,4,5,6,7,8)
 weights <- c(51, 64, 28, 32, 68, 55, 36, 41)
-species_id <- c("AB","AB","AM","Am","AB","AB","AM","AM")
+species_id <- c("AB","AB","AM","AM","AB","AB","AM","AM")
 
 # Question: What are the record IDs of animals that have weights greater than 30 and have the species id 'AB' ? 
 
@@ -231,9 +236,30 @@ browseVignettes()
 
 # Dealing with error messages
 
-(weight_kg <- 55
+(weight_kg <- 55)
   
 # Asking for help
-# Goodle search
-# Stack Overflow/Github/R-help mailing list
+# Google search
+# Stack Overflow
+# Github
+# R-help mailing list
+# R-blogger
+
+
+##############################
+###### install packages ######
+##############################
+  
+install.packages("tidyverse")
+
+# you can do the same thing in the right bottom section of RStudio
+
+############################
+###### Save Variables ######
+############################
+
+save.image('temp.RData')
+
+# you can do the same in the upper right section of RStudio
+
 
