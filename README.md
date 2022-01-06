@@ -47,3 +47,5 @@ R and RStudio are two separate pieces of software:
 ## Resources for learning more about R:
 
 - [STHDA](http://www.sthda.com/english/)
+- [R-Blogger](https://www.r-bloggers.com/)
+- Your best friend: Google
