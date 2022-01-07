@@ -15,7 +15,7 @@ To insert a chunk for R code, press option+command+i on mac or ctrl+alt+i on PC.
 Downloading the data
 ```{r}
 download.file(url = "https://ndownloader.figshare.com/files/2292169",
-              destfile = 'data_raw/portal_data_joined.csv')
+              destfile = 'data_raw/survey_data.csv')
 ```
 
 Reading the data into R
@@ -25,7 +25,7 @@ library(tidyverse)
 
 ```{r}
 # read the data into a data frame
-surveys <- read_csv('data_raw/portal_data_joined.csv')
+surveys <- read_csv('data_raw/survey_data.csv')
 ?read_csv
 
 # show first few lines of data
