@@ -145,7 +145,7 @@ surveys$species_id
 
 Exercise
 ```{r}
-# 1. Create a data.frame (surveys_200) containing only the data in row 200 of the surveys dataset. 
+# 1. Create a data.frame (surveys_200) containing only the data in row 1 to row 200 of the surveys dataset. 
 
 
 
