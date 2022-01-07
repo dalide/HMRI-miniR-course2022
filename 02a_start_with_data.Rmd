@@ -1,0 +1,326 @@
+---
+title: "start with data"
+author: "Licheng Zhang"
+date: "1/1/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+To insert a chunk for R code, press option+command+i on mac or ctrl+alt+i on PC.
+
+
+# Loading the survey data
+
+Downloading the data
+```{r}
+download.file(url = "https://ndownloader.figshare.com/files/2292169",
+              destfile = 'data_raw/portal_data_joined.csv')
+```
+
+Reading the data into R
+```{r}
+library(tidyverse)
+```
+
+```{r}
+# read the data into a data frame
+surveys <- read_csv('data_raw/portal_data_joined.csv')
+?read_csv
+
+# show first few lines of data
+head(surveys)
+
+# show last few lines of data
+tail(surveys)
+
+# open data in RStudio's Data Viewer
+view(surveys)
+```
+
+
+```{r}
+str(surveys)
+
+# Based on the output of str(surveys), can you answer the following questions?
+# 1. What is the class of the object surveys?
+# 2. How many rows and how many columns are in this object? 
+```
+
+# Inspecting data frames
+```{r}
+# Size
+dim(surveys)
+
+nrow(surveys)
+
+ncol(surveys)
+
+# Content
+head(surveys)
+
+tail(surveys)
+
+# Names
+names(surveys)
+colnames(surveys)
+
+rownames(surveys)
+
+# Summary
+str(surveys)
+
+summary(surveys)
+
+```
+
+
+# Indexing and subsetting data frames
+Our survey data frame has rows and columns (it has 2 dimensions), if we want to extract some specific data from it, we need to specify the "coordinates" we want from it. Row numbers come first, followed by column numbers. However, note that different ways of specifying these coordinates lead to results with different classes.
+```{r}
+# we can extract specific values by specifying row and column indices in the format:
+# data_frame[row_index, column_index]
+
+# first row, first column
+surveys[1, 1]
+
+# first row, sixth column
+surveys[1, 6]
+
+# select all columns for the first row
+surveys[1, ]
+
+# select the first column across all rows
+surveys[, 1]
+
+# an even shorter way to select first column across all rows:
+surveys[1] # No comma !
+
+# To select multiple rows or columns, use vectors
+# select first three rows of the 5th and 6th column
+surveys[c(1,2,3),c(5,6)]
+
+# we can use : operator to create those vectors:
+surveys[1:3, 5:6]
+
+# get first column as a vector
+surveys[[1]]
+
+# get the first value in our date frame
+surveys[[1,1]]
+
+```
+
+
+```{r}
+# : is a special funtion that creates numeric vectors of integers in increasing or decreasing order
+1:10
+
+10:1
+
+```
+
+you can also exclude certain indices of a data frame using the '-' sign
+```{r}
+# The whole data frame, except the first column
+surveys[, -1]
+
+# equivalent to head(surveys)
+surveys[-(7:nrow(surveys)), ]
+```
+
+Data frames can be subset by calling indices (as shown previously), but also by calling their column names directly
+```{r}
+# As before, using single brackets returns a data frame
+surveys['species_id']
+
+surveys[, 'species_id']
+
+# dDouble brackets returns a vector
+surveys[['species_id']]
+
+# We can also use the $ operator with column names instead of double brackets, This returns a vector
+surveys$species_id
+```
+
+Exercise
+```{r}
+# 1. Create a data.frame (surveys_200) containing only the data in row 200 of the surveys dataset. 
+
+
+
+# 2. Notice how nrow() gave you the number of rows in a data.frame? 
+# Pull out the last row using nrow() instead of the row number
+# Create a new data frame (surveys_last) from that last row.
+
+
+
+# 3. Use nrow() to extract the row that is in the middle of the data frame. Store the content of this row in an object named surveys_middle
+
+
+
+# 4. Combine nrow() with the - notation above to reproduce the behavior of head(surveys), keeping just the first through 6th rows of the surveys dataset. 
+
+
+
+```
+
+
+# Factors
+
+R has a special class for working with categorial data, called factor. Factors are very useful and actually contribute to making R particularly well suited to working with data. 
+Once created, factors can only contain a pre-defined set of values, known as levels. Factors are stored as integers associated with labels and they can be ordered or unordered. While factors look (and often behave) like character vectors, they are actually treated as integer vectors by R. So you need to be very careful when treating them as strings. 
+
+When importing a data frame with read_csv(), the columns that contain text are not automatically coerced into the factor date type, but once we have loaded the data we can do the conversion using the factor function. 
+
+```{r}
+surveys$sex <- factor(surveys$sex)
+
+summary(surveys$sex)
+```
+
+By default, R always sorts levels in alphabetical order
+```{r}
+sex <- factor(c('male','female','female','male'))
+
+levels(sex)
+
+nlevels(sex)
+
+```
+
+
+Sometimes, the order of the factors does not mater, other times you might want to specify the order because it is meaningful(e.g., 'low', 'medium', 'high'), it improves your visualization, or it is required by a particular type of analysis. Here one way to reorder our levels in the sex vector would be
+```{r}
+sex # current order
+
+sex <- factor(sex, levels = c('male', 'female'))
+
+sex # after re-ordering
+
+```
+
+Exercise
+```{r}
+# 1. Change the columns taxa and genus in the surveys data frame into a factor
+
+
+
+# 2. Using the functions you learned before, can you find out
+# How many rabbits were observed?
+# How many different genera are in the genus column?
+
+
+
+```
+
+
+Converting factors
+```{r}
+# Converting a factor to a character vector
+as.character(sex)
+
+# Converting a factor to a numeric is a little trickier. 
+year_fct <- factor(c(1990,1983,1977,1998,1990))
+
+as.numeric(year_fct) # wrong way, it returns the index values of the factor, not its levels
+
+as.numeric(as.character(year_fct))  # works
+
+as.numeric(levels(year_fct))[year_fct]   # the recommended way
+```
+
+Renaming factors
+```{r}
+# when you data is stored as a factor, you can use the plot() function to get a quick glance at the number of observations represented by each factor level. 
+plot(surveys$sex)
+
+# however, as we saw there are about 1700 individuals for which the sex information hasn't been recorded. To show them in the plot, we can turn the missing values into a factor levels with addNA() function
+sex <- surveys$sex
+levels(sex)
+
+sex <- addNA(sex)
+levels(sex)
+
+head(sex)
+
+# we have to give the new factor level a label
+levels(sex)[3] <- 'undetermined'
+levels(sex)
+
+head(sex)
+
+plot(sex)
+
+```
+
+Exercise
+```{r}
+# 1. Rename "F" and "M" to "female" and "male" respectively
+
+
+# 2. Now that we have renamed the factor level to "undetermined", can you recreate the barplot such that "undetermined" is first (before "female")?
+
+
+```
+
+Exerise
+```{r}
+# 1. data frames can also be created by hand with the data.frame() function. There are a few mistakes in this hand-crafted data.frame. Can you spot and fix them? Don't hesitate to experiment!
+animal_data <- data.frame(
+  animal = c(dog, cat, sea cucumber, sea urchin),
+  feel = c("furry","squishy", "spiny"),
+  weight = c(45, 8 1.1, 0.8)
+)
+
+# 2. Can you predict the class for each of the columns in the following example? Check your guesses using str(country_climate):
+# Are they what you expected? Why? Why not? 
+# What would you need to change to ensure that each column had the accurate data type?
+
+country_climate <- data.frame(
+       country = c("Canada", "Panama", "South Africa", "Australia"),
+       climate = c("cold", "hot", "temperate", "hot/temperate"),
+       temperature = c(10, 30, 18, "15"),
+       northern_hemisphere = c(TRUE, TRUE, FALSE, "FALSE"),
+       has_kangaroo = c(FALSE, FALSE, FALSE, 1)
+       )
+
+
+
+```
+
+
+# Formatting dates
+
+```{r}
+str(surveys)
+
+# we are going to use the ymd() function from the package lubridate
+library(lubridate)
+
+my_date <- ymd("2015-01-02")
+str(my_date)
+
+my_date <- ymd(paste("2015","1","2", sep="-"))
+str(my_date)
+
+# Now we create a character vector from the year, month, and day columns of surveys using paste()
+paste(surveys$year, surveys$month, surveys$day, sep='-')
+
+ymd(paste(surveys$year, surveys$month, surveys$day, sep='-'))
+
+surveys$date <- ymd(paste(surveys$year, surveys$month, surveys$day, sep='-'))
+
+str(surveys)
+
+summary(surveys)
+
+# why some dates could not be parsed
+missing_dates <- surveys[is.na(surveys$date), c('year', 'month', 'day')]
+
+head(missing_dates)
+
+# if you had to use these data for your analysis, how would you deal with this situation? 
+
+```
+
