@@ -5,7 +5,7 @@ METHODIST ASSOCIATION FOR POSTDOCTORAL AND TRAINEE AFFAIRS (MAPTA)
 
 ## Course Plan
 
-Total 4 talks are scheduled so far, and the dates are in January 2022, one hour session for each week. This is the first attempt to organize this kind of lessons for trainees and students of Houston Methodist Research Institute. Hope it goes well and continue to be provided every year afterwards. 
+Total 4 talks are scheduled so far, and the dates are in January 2022, 1 or 1.5 hour session for each week. This is the first attempt to organize this kind of lessons for trainees and students of Houston Methodist Research Institute. Hope it goes well and continue to be provided every year afterwards. 
 
 The goal is to help people get more familiar with R programming (potentially beneficial to their research and publications) and not be afraid to dive into it after the lessons. This is meant to be a hands-on experience for the audience, so 30% of the time will be slides presentation and 70% of the time will be live coding with RStudio.
 
