@@ -19,7 +19,7 @@ A lot of the contents we will present come from other existing tutorials and wor
 ## Topics potentially to be covered, one per talk (if we have enough speakers)
 
 - R basics ([slide1](https://docs.google.com/presentation/d/1IUUpHC__LP5f9qm3RjL8L5ArQnfJ1RgvZY9MJWjeUAY/edit#slide=id.g298d5f999f_2_0))
-- Data wrangling and manipulation ([slide1](https://docs.google.com/presentation/d/1taRFmJTkt9ME_lwf8ArVJqcqdvQOv_yyrIKsHeCo3k0/edit#slide=id.g45c412dcf9_0_5), slide2)
+- Data wrangling and manipulation ([slide1](https://docs.google.com/presentation/d/1taRFmJTkt9ME_lwf8ArVJqcqdvQOv_yyrIKsHeCo3k0/edit#slide=id.g45c412dcf9_0_5), [slide2](https://docs.google.com/presentation/d/1ue6otJr3qTTBxresPthQAEnIfAo0SI1bJ2Ko__aUs94/edit#slide=id.g30a58620b0_0_0))
 - Data Visualization
 - Basic Stats
 - R markdown for reports
